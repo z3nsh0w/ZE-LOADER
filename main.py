@@ -39,7 +39,7 @@ ERROR_LIST = []
 VIDEO_LAST_NAME = ''
 VIDEO_DOWNLOADED = False
 HISTORY_MAX_LENGHT = 9
-FIRST_RUN = 1
+FIRST_RUN = 0
 
 os.makedirs(CONFIG_PATH, exist_ok=True)
 
