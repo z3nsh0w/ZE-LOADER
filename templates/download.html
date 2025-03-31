@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+    <title>ZE LOADER</title>
+
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="/static/images/icon.ico">
+
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a class="bar_icon"></a></li>
+            <li><a href="/index" class="bar_main">Main</a></li>
+            <li><a href="/history">History</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </header>
+
+    <div class="main_download">
+        <span id="downloader_loader" class="downloader_loader"></span>
+
+        <p style="white-space: pre-line" class="state-value" id="state-value">{{ state|safe }}</p>
+
+        <div class="download_form_downloadpage">
+            <form action="/download" method="GET">
+                <input class="url_input" required="" type="text" name="url" autocomplete="off">
+                <span class="url_text">ENTER VIDEO URL</span>
+                <i></i>
+            </form>
+        </div>
+    </div>
+
+    <div class="download_list_format">
+
+    </div>
+
+    <script>
+        function updateState() {
+            fetch('/get_state?task_id={{ task_id }}')
+                .then(response => response.json())
+                .then(data => {
+                    const stateValue = document.getElementById('state-value');
+                    stateValue.innerText = data.state;
+                    const error_text = data.error_text;
+
+                    if (data.ready == true) {
+                        window.location.href = `/index-error?error=${encodeURIComponent(error_text)}`;
+
+                    }
+                    else {
+                        document.getElementById('state-value').innerHTML = data.state;
+
+                    }
+                    setTimeout(updateState, 200);
+                })
+                .catch(error => {
+                    console.error('Error fetching state:', error);
+                });
+        }
+
+        updateState();
+    </script>
+</body>
+
+</html>

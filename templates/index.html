@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+
+    <title>ZE LOADER</title>
+
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="/static/images/icon.ico">
+
+
+</head>
+
+<body>
+    <header>
+        <ul class="header_page">
+            <li><a class="bar_icon"></a></li>
+            <li><a href="/index" class="bar_main">Main</a></li>
+            <li><a href="/history">History</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </header>
+    
+    <div class="main">
+        <div class="download_form">
+            <form action="/download" method="GET">
+                <input class="url_input" required="" type="text" name="url" autocomplete="off">
+                <span class="url_text">ENTER VIDEO URL</span>
+                 <i></i>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>

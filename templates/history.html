@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+
+    <title>ZE LOADER</title>
+
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="/static/images/icon.ico">
+
+</head>
+
+<body>
+    <header>
+        <ul class="header_page">
+            <li><a class="bar_icon"></a></li>
+            <li><a href="/index">Main</a></li>
+            <li><a href="/history" class="bar_main">History</a></li>
+            <li><a href="/settings">Settings</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </header>
+
+    <div class="history_card">
+        {% for hist in histor %}
+        <div class="hist" id="{{ hist.path }}_cont">
+            <p class="hist_name">{{ hist.name }}</p>
+            <p class="hist_url">{{ hist.url }}</p>
+            <p class="hist_exists">{{ hist.exists }}</p>
+
+            <button onclick="delete_history(this)" aria-label="Delete item" class="delete-button" id="{{ hist.path }}">
+                <svg class="trash-svg" viewBox="0 -10 64 74" xmlns="http://www.w3.org/2000/svg">
+                    <g id="trash-can">
+                        <rect x="16" y="24" width="32" height="30" rx="3" ry="3" fill="#e74c3c"></rect>
+
+                        <g transform-origin="12 18" id="lid-group">
+                            <rect x="12" y="12" width="40" height="6" rx="2" ry="2" fill="#c0392b"></rect>
+                            <rect x="26" y="8" width="12" height="4" rx="2" ry="2" fill="#c0392b"></rect>
+                        </g>
+                    </g>
+                </svg>
+            </button>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <script>
+        function delete_history(button) {
+            const id = button.id;
+            const histContainer = button.closest('.hist');
+            fetch('/delete_history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ path: id }),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        histContainer.classList.add('fade-out-left');
+
+                        histContainer.addEventListener('transitionend', () => {
+                            histContainer.remove();
+                            checkEmptyHistory();
+                        }, { once: true });
+                    } else {
+                        console.error('Failed to delete history');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function checkEmptyHistory() {
+            const historyCard = document.querySelector('.history_card');
+            const historyItems = historyCard.querySelectorAll('.hist');
+            console.log(historyItems.length)
+            console.log('125')
+            if (historyItems.length === 0) {
+                const emptyHistoryContainer = document.createElement('div');
+                emptyHistoryContainer.className = 'empty-history';
+                emptyHistoryContainer.innerHTML = `
+            <div class="empty-history">
+                <p>History is empty</p>
+            </div>
+        `;
+                historyCard.parentNode.insertBefore(emptyHistoryContainer, historyCard);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', checkEmptyHistory);
+
+    </script>
+
+
+</body>
+
+</html>

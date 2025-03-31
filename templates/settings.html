@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+
+    <title>ZE LOADER</title>
+
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" href="/static/images/icon.ico">
+
+</head>
+
+<body>
+    <ul>
+        <li><a class="bar_icon"></a></li>
+        <li><a href="/index">Main</a></li>
+        <li><a href="/history">History</a></li>
+        <li><a href="/settings" class="bar_main">Settings</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+
+    <div class="setting_cont">
+        <div class="set_cont">
+            <div class="setting1_icon"></div>
+            <div class="setting_name">MAIN SETTINGS</div>
+
+        </div>
+        <div class="set_cont">
+            <div class="setting2_icon"></div>
+            <div class="setting1_name">Cookie browser choice</div>
+            <label class="cookie_choice" for="cookie_choice"></label>
+            <select class="cookie_choice_label" id="cookie_choice" name="cookie_choice">
+                <option value="not_using">Don't use cookie</option>
+                <option value="chrome">Chrome</option>
+                <option value="firefox">Firefox</option>
+                <option value="edge">Microsoft Edge</option>
+                <option value="opera">Opera</option>
+                <option value="brave">Brave</option>
+                <option value="safari">Safari</option>
+                <option value="custom">Custom path (for unsupported browsers)</option>
+            </select>
+        </div>
+        <div class="set_cont">
+            <div class="setting3_icon"></div>
+            <div class="setting1_name">Download type</div>
+            <label class="video_type" for="video_type"></label>
+            <select class="video_type_label" id="video_type" name="video_type">
+                <option value="video+audio">Video + Audio</option>
+                <option value="only_video">Only video (extract)</option>
+                <option value="only_audio">Only audio (extract)</option>
+            </select>
+        </div>
+        <div class="set_cont">
+            <div class="setting4_icon"></div>
+            <div class="setting1_name">Download Quality</div>
+            <label class="video_quality" for="video_quality"></label>
+            <select class="video_quality_label" id="video_quality" name="video_quality">
+                <option value="best_quality">Best quality</option>
+                <option value="medium_quality">Medium quality</option>
+                <option value="low_quality">Low quality</option>
+            </select>
+        </div>
+        <div class="set_cont">
+            <div class="setting5_icon"></div>
+            <div class="setting1_name">Edit destination path</div>
+            <div class="current_path_">(current path: {{ current_path }})</div>
+            <div class="edit_dist_path_button">
+                <button class="choose_directory_button" id="choose_directory_button">CHOOSE DIRECTORY</button>
+            </div>
+        </div>
+
+
+        <div id="change_direct" class="change_direct">
+            <button class="close_directory_choose" id="close_directory_choose">Close</button>
+            <div class="dist_path_form">
+                <div class="dist_path_form">
+                    <input class="url_input" type="text" required="" autocomplete="off">
+                    <span class="url_text">ENTER PATH</span>
+                    <i></i>
+                </div>
+                <button class="ok_button_dist_path">OK.</button>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <script>
+
+
+        // 
+        //
+        // HANDLING CHANGE OF DOWNLOAD QUALITY
+        // 
+        // 
+
+
+        function sendVideoQuality(quality) {
+            fetch('/set_video_quality', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ quality: quality }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Quality set to:', data.quality);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function getVideoQuality() {
+            fetch('/get_video_quality')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('video_quality').value = data.quality;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectElement = document.getElementById('video_quality');
+            selectElement.addEventListener('change', function () {
+                const selectedQuality = selectElement.value;
+                sendVideoQuality(selectedQuality);
+            });
+            getVideoQuality();
+        });
+
+
+
+        // 
+        //
+        // HANDLING CHANGE OF DOWNLOAD TYPE
+        // 
+        // 
+
+
+
+        function sendVideoType(type) {
+            fetch('/set_video_type', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ type: type }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Download type set to:', data.type);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function getVideoType() {
+            fetch('/get_video_type')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('video_type').value = data.type;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectElement = document.getElementById('video_type');
+            selectElement.addEventListener('change', function () {
+                const selectedType = selectElement.value;
+                sendVideoType(selectedType);
+            });
+
+            getVideoType();
+        });
+
+
+
+        // 
+        // 
+        // HANDLING CHANGE OF DOWNLOAD SAVE PATH
+        // 
+        // 
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlInput = document.querySelector('.url_input');
+            const okButton = document.querySelector('.ok_button_dist_path');
+
+            okButton.addEventListener('click', function () {
+                const path = urlInput.value.trim();
+
+                if (!path) {
+                    urlInput.classList.add('error');
+                    setTimeout(() => urlInput.classList.remove('error'), 1000);
+                    return;
+                }
+
+                try {
+                    okButton.disabled = true;
+                    okButton.textContent = 'Отправка...';
+
+                    const response = fetch('/set_directory_path', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ path: path }),
+                    })
+
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Directory path set to:', data.path);
+
+                            urlInput.value = '';
+                            document.getElementById('change_direct').style.display = 'none';
+                            window.location.reload();
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+
+                } catch (error) {
+                    console.error('Error setting directory path:', error);
+                } finally {
+                    okButton.disabled = false;
+                    okButton.textContent = 'OK.';
+                }
+            });
+
+            urlInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    okButton.click();
+                }
+            });
+        });
+
+        // 
+        // 
+        // HANDLING COOKIE BROWSER CHOICE 
+        // 
+        // 
+
+
+        function sendCookieType(type) {
+            fetch('/set_browser_cookie', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ type: type }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Download type set to:', data.type);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function getCookieType() {
+            fetch('/get_browser_cookie')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('cookie_choice').value = data.type;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const selectElement = document.getElementById('cookie_choice');
+            selectElement.addEventListener('change', function () {
+                const selectedType = selectElement.value;
+                sendCookieType(selectedType);
+            });
+
+            getCookieType();
+        });
+    </script>
+
+    <script>
+        const checkbox = document.getElementById('checkbox');
+        const switchOnOff = document.querySelector('.switch_on_off');
+
+        function updateSwitchText() {
+            switchOnOff.style.opacity = '0';
+
+            setTimeout(() => {
+                if (checkbox.checked) {
+                    switchOnOff.textContent = 'ON';
+                } else {
+                    switchOnOff.textContent = 'OFF';
+                }
+
+                switchOnOff.style.opacity = '1';
+            }, 300);
+        }
+
+        checkbox.addEventListener('change', updateSwitchText);
+
+        updateSwitchText();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chooseButton = document.getElementById('choose_directory_button');
+            const closeButton = document.getElementById('close_directory_choose');
+            const changeDirect = document.getElementById('change_direct');
+
+            chooseButton.addEventListener('click', function () {
+                changeDirect.style.display = 'flex';
+                console.log('clicked');
+            });
+
+            closeButton.addEventListener('click', function () {
+                changeDirect.style.display = 'none';
+                console.log('closed');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,870 @@
+/* MAIN PROPERTIES */
+
+body {
+  color: whitesmoke;
+  background-color: #181818;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: 0px;
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  translate: 'no';
+
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
+* {
+  font-family: "Jura", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  color: white;
+  translate: 'no';
+}
+
+
+.main {
+  height: 500px;
+  width: 1200px;
+  align-self: center;
+  align-items: center;
+  background-color: #181818;
+  text-align: center;
+  scrollbar-width: 0px;
+}
+
+
+/* DOWNLOAD FORM PROPS */
+
+
+.download_form {
+  position: relative;
+  width: 1000px;
+  align-self: center;
+  align-items: center;
+  justify-self: center;
+  top: 200px;
+}
+
+.download_form input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: #23242a;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.download_form span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: #8f8f8f;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.download_form input:valid~span,
+.download_form input:focus~span {
+  color: #45f3ff;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0, 75em;
+}
+
+.download_form i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #45f3ff;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.download_form input:valid~i,
+.download_form input:focus~i {
+  height: 44px;
+  height: 76px;
+}
+
+.download_history {
+  align-self: flex-end;
+}
+
+
+/* NAVIGATION BAR */
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  background-color: #1d1d1d;
+  background-color: #181818;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding-right: 20px;
+  padding-right: 40px;
+  text-decoration: none;
+  user-select: none;
+  color: #8f8f8f;
+}
+
+.bar_icon {
+  background-size: 60px;
+  background-repeat: no-repeat;
+  height: 1px;
+  width: 1px;
+  padding-right: 15px;
+}
+
+a:hover {
+  color: #45f3ff;
+  color: #fe1e24;
+  transition: 0.3s;
+
+}
+
+.bar_main {
+  color: #fe1e24;
+  animation: dropShadowAnimation 0.2s ease-in-out forwards;
+}
+
+.state-value {
+  user-select: none;
+  transition: 1s;
+  border-radius: 10px;
+}
+
+.error_txt {
+  user-select: none;
+  width: 80%;
+  align-self: center;
+  text-align: center;
+  justify-self: center;
+  margin-top: 15%;
+  margin-bottom: -150px;
+}
+
+.navigation_settings_bar {
+  width: 250px;
+  height: 500px;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+}
+
+.navigation_settings_page {
+  width: 1000px;
+  height: 500px;
+  background-color: #1f1f1f;
+  border-radius: 10px;
+}
+
+.navigation_settings {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  padding: 60px;
+}
+
+.setting_cont {
+  border-radius: 15px;
+  width: 90%;
+  height: 80%;
+  align-items: center;
+  position: relative;
+  align-self: center;
+  border-top: #fe1e24;
+  top: 20px;
+  border: 1px solid #45f3ff;
+  border: 1px solid #595959;
+  user-select: none;
+  font-size: 18px;
+  font-size: 20px !important;
+}
+
+.setting1_name {
+  font-size: 20px;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.set_cont {
+  position: relative;
+  border-radius: 10px;
+  width: 97.5%;
+  align-self: center;
+  margin-left: 1.25%;
+  margin-top: 15px;
+  height: 50px;
+  background-color: #1f1f1f;
+  display: flex;
+}
+
+.setting1_button {
+  margin-left: auto;
+  justify-self: center;
+  align-content: center;
+  width: 250px;
+  border-radius: 5px;
+  margin-right: 1%;
+  background-color: #181818;
+  height: 25px;
+  margin-top: 14px;
+  font-size: 19px;
+  text-align: center;
+}
+
+.video_type {
+  font-size: 20px;
+}
+
+.cookie_choice {
+  font-size: 20px;
+}
+
+.cookie_choice_label {
+  height: 25px;
+  align-self: center;
+  margin-left: auto;
+  border-radius: 5px;
+  margin-right: 1%;
+  background-color: #181818;
+  font-size: 20px;
+  border: 0px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.cookie_choice_label:hover {
+  background-color: #303030;
+  box-shadow: 0px 0px 35px #303030;
+}
+
+.video_type_label {
+  height: 25px;
+  align-self: center;
+  margin-left: auto;
+  border-radius: 5px;
+  margin-right: 1%;
+  background-color: #181818;
+  font-size: 20px;
+  border: 0px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.video_type_label:hover {
+  background-color: #303030;
+  box-shadow: 0px 0px 35px #303030;
+}
+
+.video_quality {
+  font-size: 20px;
+}
+
+.video_quality_label {
+  height: 25px;
+  align-self: center;
+  margin-left: auto;
+  border-radius: 5px;
+  margin-right: 1%;
+  background-color: #181818;
+  font-size: 20px;
+  border: 0px;
+  transition: 0.3s;
+  width: 250px;
+}
+
+.video_quality_label:hover {
+  background-color: #303030;
+  box-shadow: 0px 0px 35px #303030;
+}
+
+option {
+  border-radius: 15px;
+  font-size: 20px;
+}
+
+.setting1_name {
+  justify-self: center;
+  align-self: center;
+  margin-left: 10px;
+}
+
+.setting_name {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  margin-left: 10px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.edit_dist_path_button {
+  align-self: center;
+  justify-self: center;
+  margin-left: auto;
+  font-size: 10px;
+  margin-right: 1%;
+}
+
+.choose_directory_button{
+  display: inline-block;
+  background-color: #181818;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: center;
+  text-align: center;
+  width: 250px;
+  font-size: 19px;
+  height: 25px;
+  align-self: center;
+  justify-self: center;
+  margin-left: auto;
+  font-size: 18px;
+  margin-right: 1%;
+}
+
+.file-input {
+  display: none;
+}
+
+.edit_directory_button {
+  display: inline-block;
+  background-color: #181818;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: center;
+  text-align: center;
+  width: 250px;
+  font-size: 19px;
+  height: 25px;
+}
+
+.edit_directory_button:hover {
+  background-color: #303030;
+  box-shadow: 0px 0px 35px #303030;
+}
+
+.current_path_ {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  margin-left: 25px;
+  font-size: 20px;
+  width: 50%;
+}
+
+.hist {
+  border-radius: 5px;
+  border: 1px solid #8f8f8f;
+  width: 95%;
+  align-self: center;
+  margin-left: 2.5%;
+  margin-right: 0;
+  height: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 15px;
+  display: flex;
+}
+
+.hist_text,
+.hist_name,
+.hist_url,
+.hist_exists {
+  margin: 0;
+  padding: 0;
+  margin-left: 15px;
+  font-size: 22px;
+  overflow: hidden;
+}
+
+.hist_url {
+  justify-self: center;
+  text-align: center;
+  width: 30%;
+  overflow: hidden;
+}
+
+.hist_name {
+  width: 40%;
+  overflow: hidden;
+}
+
+.hist_button {
+  font-family: 'Quicksand';
+  width: 50px;
+  height: 40px;
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-top: -5px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon_hist {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon_hist path {
+  fill: white;
+}
+
+.hist_button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: rgb(233, 69, 69);
+  align-items: center;
+}
+
+.hist_button:hover .svgIcon_hist {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(60%);
+}
+
+.hist_button::before {
+  position: absolute;
+  top: -20px;
+  content: "Delete";
+  color: white;
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.hist_button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
+}
+
+
+.delete-button {
+  position: relative;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1em;
+  transition: transform 0.2s ease;
+  margin-left: auto;
+  margin-top: -15px;
+}
+
+.trash-svg {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  overflow: visible;
+
+}
+
+#lid-group {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.delete-button:hover #lid-group {
+  transform: rotate(-28deg) translateY(2px);
+}
+
+.delete-button:active #lid-group {
+  transform: rotate(-12deg) scale(0.98);
+}
+
+.delete-button:hover .trash-svg {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.delete-button:active .trash-svg {
+  transform: scale(0.96) rotate(-1deg);
+}
+
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-out.hidden {
+  display: none;
+}
+
+
+.hist {
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.hist.fade-out-left {
+  transform: translateX(100%);
+  opacity: 0;
+  height: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+.turn_on_checkbox {
+  display: none;
+}
+
+.switch_turn_on {
+  align-self: center;
+  margin-right: 10px;
+  height: 25px;
+  width: 250px;
+
+  margin-left: auto;
+  background-color: rgb(46, 46, 46);
+  border-radius: 5px;
+  z-index: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 15px;
+  transition: all 0.3s;
+  user-select: none;
+}
+
+.switch_turn_on svg path {
+  fill: white;
+}
+
+.turn_on_checkbox:checked+.switch_turn_on {
+  background-color: rgb(44, 0, 88);
+  background-color: #227277;
+  background-color: #404040;
+  box-shadow: 0px 0px 25px #227277;
+  box-shadow: 0px 0px 25px #404040;
+}
+
+.switch_on_off {
+  font-size: 15px;
+  transition: opacity 0.3s;
+}
+
+.switch_on_off:hover {
+  box-shadow: 0px 0px 35px #303030;
+  background-color: #303030;
+}
+
+
+.history_card {
+  margin-top: 4px;
+}
+
+.change_direct {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.header_page {
+  z-index: 1000;
+}
+
+.downloader_loader {
+  width: 48px;
+  height: 60px;
+  display: inline-block;
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+}
+.downloader_loader::after,
+.downloader_loader::before {
+  content: "";
+  box-sizing: border-box;
+  width: 96px;
+  height: 96px;
+  border: 2px solid #fff;
+  border: 2px solid #45f3ff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: rotation 2s ease-in-out infinite alternate;
+}
+.downloader_loader::after {
+  border-color: #fe1e24;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+.dist_path_form {
+  position: relative;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.dist_path_form input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: #23242a;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.dist_path_form span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: #8f8f8f;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.dist_path_form input:valid~span,
+.dist_path_form input:focus~span {
+  color: #45f3ff;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0, 75em;
+}
+
+.dist_path_form i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #45f3ff;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.dist_path_form input:valid~i,
+.dist_path_form input:focus~i {
+  height: 44px;
+  height: 76px;
+  font-size: 0px;
+}
+
+
+.close_directory_choose {
+  background-color: transparent;
+  border-radius: 5px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 50px;
+  width: 100px;
+  font-size: 21px;
+  transition: all 0.3s ease-in-out;
+}
+
+.close_directory_choose:hover {
+  background-color: #fe1e24;
+  transition: all 0.3s ease-in-out;
+}
+
+.ok_button_dist_path {
+  background-color: #45f3ff;
+  border-radius: 5px;
+  color: black;
+  height: 50px;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.choose_directory_button:hover {
+  background-color: #303030;
+  box-shadow: 0px 0px 35px #303030;
+}
+
+.main_download {  
+  height: 100%;
+  width: 100%;
+  align-self: center;
+  align-items: center;
+  background-color: #181818;
+  text-align: center;
+  scrollbar-width: 0px;
+}
+
+.main_download::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+.download_form_downloadpage {
+  position: relative;
+  width: 1000px;
+  align-self: center;
+  align-items: center;
+  justify-self: center;
+}
+
+.download_form_downloadpage input {
+  position: relative;
+  width: 100%;
+  padding: 20px 10px 10px;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: #23242a;
+  font-size: 1em;
+  letter-spacing: 0.05em;
+  transition: 0.5s;
+  z-index: 10;
+}
+
+.download_form_downloadpage span {
+  position: absolute;
+  left: 0;
+  padding: 20px 10px 10px;
+  font-size: 1em;
+  color: #8f8f8f;
+  letter-spacing: 00.05em;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+.download_form_downloadpage input:valid~span,
+.download_form_downloadpage input:focus~span {
+  color: #45f3ff;
+  transform: translateX(-10px) translateY(-34px);
+  font-size: 0, 75em;
+}
+
+.download_form_downloadpage i {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #45f3ff;
+  border-radius: 4px;
+  transition: 0.5s;
+  pointer-events: none;
+  z-index: 9;
+}
+
+.download_form_downloadpage input:valid~i,
+.download_form_downloadpage input:focus~i {
+  height: 44px;
+  height: 76px;
+}
+
+
+.empty-history {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  margin-bottom: 50px;
+}
+
+.icon {
+  fill: white;
+}
+
+.about_text {
+  justify-self: center;
+  align-self: center;
+  user-select: none;
+  margin-top: 250px;
+}
