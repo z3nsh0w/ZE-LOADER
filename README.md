@@ -1,6 +1,6 @@
 # ZE-LOADER
 
-## ZE-LOADER is A open-souce multi-source video downloader
+## ZE-LOADER is a multi-source video downloader
 
 ### **Project Description**  
 
@@ -19,7 +19,3 @@ The interface is developed with **Flask** and rendered via **WebView**.
 - **Download format choice** (MP4, WEBM, audio-only, etc.).  
 - **Multi-threaded downloads** for faster fetching.  
 - **And all the advanced functionality** you'd expect from premium-grade downloaders.  
-
-#### **Note:**  
-🔹 This repository contains **only the source code**.  
-🔹 Pre-built executables for **Windows, Linux, and macOS** are available for download in the **Releases** section.  
