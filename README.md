@@ -5,7 +5,7 @@ It does **not** represent the final quality of the product. Thank you for your u
 
 ---
 
-## **ZE LOADER** is a sleek, intuitive, and powerful media downloader designed for effortless video and audio extraction from **1,000+ supported platforms**. Whether you need high-quality downloads, format flexibility, or bypassing restrictions, **ZE LOADER** delivers a seamless experience.
+### **ZE LOADER** is a sleek, intuitive, and powerful media downloader designed for effortless video and audio extraction from **1,000+ supported platforms**. Whether you need high-quality downloads, format flexibility, or bypassing restrictions, **ZE LOADER** delivers a seamless experience.
 
 
 ### **Project Description**  
