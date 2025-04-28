@@ -1,11 +1,15 @@
 # ZE LOADER
 
+
+#### **ZE LOADER** is a sleek, intuitive, and powerful media downloader designed for effortless video and audio extraction from **1,000+ supported platforms**. Whether you need high-quality downloads, format flexibility, or bypassing restrictions, **ZE LOADER** delivers a seamless experience.
+
+---
+
 **Attention!** This is a **Pre-Alpha** version of **ZE LOADER** intended for **testing purposes only**.  
 It does **not** represent the final quality of the product. Thank you for your understanding and support.  
 
 ---
 
-### **ZE LOADER** is a sleek, intuitive, and powerful media downloader designed for effortless video and audio extraction from **1,000+ supported platforms**. Whether you need high-quality downloads, format flexibility, or bypassing restrictions, **ZE LOADER** delivers a seamless experience.
 
 
 ### **Project Description**  
