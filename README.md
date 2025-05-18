@@ -2,10 +2,10 @@
 
 
 ## ZE LOADER is a tool that lets you easily install videos from any source, in any format and quality.
-The app works across all platforms and features a user-friendly design with multiple functions for comfortable usage.
+## The app works across all platforms and features a user-friendly design with multiple functions for comfortable usage.
 
 
-## 🚨 Pre-built multiplatform images are not currently available. The installer and app images will be released tomorrow.
+#### 🚨 Pre-built multiplatform images are not currently available. The installer and app images will be released tomorrow.
 
 
 #### **Key Features:**  
