@@ -24,16 +24,17 @@
 
 <body>
     <header>
-        <ul class="header_page">
+        <ul id="header_page"  class="pywebview-drag-region">
             <li><a class="bar_icon"></a></li>
             <li><a href="/index">Main</a></li>
             <li><a href="/history" class="bar_main">History</a></li>
             <li><a href="/settings">Settings</a></li>
             <li><a href="/about">About</a></li>
+            <li><a href='' id="close-btn" class="window-btn" onclick="window.pywebview.api.close()">Close APP</a></li>
         </ul>
     </header>
 
-    <div class="history_card">
+    <div id="history_card" class="pywebview-drag-region">
         {% for hist in histor %}
         <div class="hist" id="{{ hist.path }}_cont">
             <p class="hist_name">{{ hist.name }}</p>

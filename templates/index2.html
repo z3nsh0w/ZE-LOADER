@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
+
+    <title>ZE TOOLS</title>
+
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/static/icon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/static/icon.ico">
+
+    <style>
+        .icon {
+            fill: white;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Quicksand", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+
+            font-family: "Orbitron", serif;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        body {
+            background-color: #1f1f1f;
+            background-color: #202020;
+            /* align-items: center; */
+            color: white;
+            /* height: 100%; */
+        }
+
+
+        /*  */
+        /*  */
+        /* INDEX HTML PAGE */
+        /*  */
+        /*  */
+
+
+        .main_card {
+            align-items: center;
+            text-align: center;
+            display: block;
+            user-select: none;
+            height: 100vh;
+        }
+
+        .main_card3 {
+            align-items: center;
+            text-align: center;
+            display: block;
+            user-select: none;
+            /* height: 100vh; */
+        }
+
+        .main_card2 {
+            align-items: center;
+            text-align: center;
+            display: flex;
+        }
+
+        .welcome_text {
+            width: 100%;
+            font-size: 60px;
+            order: 2;
+            padding-top: 40px;
+            padding-bottom: 14px;
+        }
+
+        .welcome_icon {
+            background-image: url('/static/images/icon.ico');
+            background-size: 180px;
+            height: 180px;
+            width: 100%;
+            z-index: 10;
+            align-self: stretch;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin-top: 130px;
+        }
+
+
+        /*  */
+        /*  */
+        /* NEXT BUTTON ON INDEX */
+        /*  */
+        /*  */
+
+
+        .welcome_next_button {
+            display: block;
+            position: relative;
+            order: 3;
+            border-radius: 15px;
+            background-color: #181818;
+            border-color: #1f1f1f;
+            width: 20%;
+            margin-left: 40%;
+            height: 50px;
+            margin-top: 30px;
+            color: white;
+            box-shadow: 0px 0px 15px #2b2b2b;
+        }
+
+        .button_form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .animated-button {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 16px 36px;
+            border: 4px solid;
+            border-color: transparent;
+            font-size: 16px;
+            background-color: inherit;
+            font-weight: 600;
+            color: greenyellow;
+            color: #ffd15c;
+            box-shadow: 0 0 0 2px greenyellow;
+            box-shadow: 0 0 0 2px #ffd15c;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            margin-top: 30px;
+        }
+
+        .animated-button svg {
+            position: absolute;
+            width: 24px;
+            fill: greenyellow;
+            fill: #ffd15c;
+            z-index: 9;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animated-button .arr-1 {
+            right: 16px;
+        }
+
+        .animated-button .arr-2 {
+            left: -25%;
+        }
+
+        .animated-button .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background-color: greenyellow;
+            background-color: #ffd15c;
+            border-radius: 10%;
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animated-button .text {
+            position: relative;
+            z-index: 1;
+            transform: translateX(-12px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .animated-button:hover {
+            box-shadow: 0 0 0 12px transparent;
+            color: #212121;
+            border-radius: 12px;
+        }
+
+        .animated-button:hover .arr-1 {
+            right: -25%;
+        }
+
+        .animated-button:hover .arr-2 {
+            left: 16px;
+        }
+
+        .animated-button:hover .text {
+            transform: translateX(12px);
+        }
+
+        .animated-button:hover svg {
+            fill: #212121;
+        }
+
+        .animated-button:active {
+            scale: 0.95;
+            box-shadow: 0 2 0 2px greenyellow;
+        }
+
+        .animated-button:hover .circle {
+            width: 220px;
+            height: 220px;
+            opacity: 1;
+        }
+
+
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+        /* MAIN HTML PAGE */
+        /* NAVIGATION SECTION */
+        /*  */
+        /*  */
+        /*  */
+        /*  */
+
+
+        .navigation {
+            overflow: hidden;
+            background-color: #2b2b2b;
+            width: 6.5%;
+            width: 77px;
+            /* height: 100%; */
+            height: 660px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: block;
+            border-radius: 10px;
+            /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+            order: 1;
+
+        }
+
+        .navi_icon {
+            background-image: url('/static/images/icon.ico');
+            background-size: 50px;
+            height: 50px;
+            width: 100%;
+            background-repeat: no-repeat;
+            border-color: #2b2b2b;
+            padding-top: 20px;
+            border: none;
+            background-position: center;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .navi_modules {
+            background-image: url('/static/images/extension.png');
+        }
+
+        .navi_home_light {
+            background-image: url('/static/images/home.png');
+            filter: drop-shadow(0px 0px 15px rgba(100, 100, 200, 0.5));
+        }
+
+        .navi_settings {
+            background-image: url('/static/images/settings.png');
+        }
+
+        .navi_github {
+            background-image: url('/static/images/github.png');
+        }
+
+        .navi_modules_light {
+            background-image: url('/static/images/extension.png');
+            filter: drop-shadow(0px 0px 15px rgba(100, 100, 200, 0.5));
+        }
+
+        .navi_home {
+            background-image: url('/static/images/home.png');
+        }
+
+        .navigation button:hover {
+            scale: (1.05);
+            /* box-shadow: 0px 0px 15px rgba(100, 100, 200, 0.5); */
+            filter: drop-shadow(0px 0px 15px rgba(100, 100, 200, 0.5));
+        }
+
+        .navigation button {
+            margin-top: 10px;
+            background-size: 35px;
+            height: 55px;
+            width: 70%;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-repeat: no-repeat;
+            background-color: #2b2b2b;
+            border: none;
+            background-position: center;
+        }
+
+        
+        .navigation {
+            background-color: #1e1f22;
+            height: 80px;
+            width: 99%;
+            /*width: 100vh;*/
+            border-radius: 10px;
+            position: fixed;
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            z-index: 1000;
+        }
+        /*  */
+        /*  */
+        /* MODULES CARD SECTION */
+        /*  */
+        /*  */
+    </style>
+
+    <script>
+        // window.onload = function() {
+        //     window.resizeTo(1200, 700);
+        //     window.onresize = function() {
+        //         window.resizeTo(1200, 700);
+        //     };
+        // };
+    </script>
+
+</head>
+
+<body>
+    <header>
+            <div class="navigation">
+                <div class="navi_icon"></div>
+                <form action="/main">
+                    <button class="navi_home"></button>
+                </form>
+
+                <form action="/modules">
+                    <button class="navi_modules_light"></button>
+                </form>
+
+                <form action="/settings">
+                    <button class="navi_settings"></button>
+                </form>
+
+                <form action="/info">
+                    <button class="navi_github"></button>
+                </form>
+            </div>
+    </header>
+    <!-- <div class="all_cards">
+        <div class="main_card2">
+            <div class="navigation_bar">
+                <div class="navigation">
+                    <div class="navi_icon"></div>
+                    <form action="/main">
+                        <button class="navi_home"></button>
+                    </form>
+
+                    <form action="/modules">
+                        <button class="navi_modules_light"></button>
+                    </form>
+
+                    <form action="/settings">
+                        <button class="navi_settings"></button>
+                    </form>
+
+                    <form action="/info">
+                        <button class="navi_github"></button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            <div class="modules_card">
+                {% for module in modules %}
+                <div class="module_1">
+                    <style>
+                        .module_1_icon::before {
+                            background-image: url('{{ module.icon }}');
+                        }
+                    </style>
+                    <div class="module_1_icon">{{ module.name }}</div>
+                    <div class="module_1_description">{{ module.description }}</div>
+                    <label class="module_1_switch">
+                        <input type="checkbox" id="{{ module.id }}" data-module-name="{{ module.name }}"
+                            onchange="toggleModule(this)" {% if module.enabled %}checked{% endif %}>
+                        <span class="slider">
+                            <span class="circle"></span>
+                        </span>
+                    </label>
+
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div> -->
+
+    <script>
+        function toggleModule(checkbox) {
+            const moduleId = checkbox.id;
+            const moduleName = checkbox.getAttribute('data-module-name');
+            const isEnabled = checkbox.checked;
+
+            fetch('/state_change', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    module_id: moduleId,
+                    module_name: moduleName,
+                    enabled: isEnabled
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        console.log('Module toggled successfully');
+                    } else {
+                        console.error('Failed to toggle module');
+                    }
+                    location.reload()
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>

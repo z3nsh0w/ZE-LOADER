@@ -1,8 +1,5 @@
-import requests
+import socket
 import yt_dlp
-import flask
-import flaskwebgui
-import time
 import random
 from flask import Flask, render_template, request, jsonify
 import os
@@ -11,19 +8,23 @@ import logging
 import json
 import pathlib
 import appdirs
-import sqlite3
 import logging
 import re
 import time
 import database
 import webbrowser
+import webview
+import platform
+import sys
+
+# import dlp222
 
 app = Flask(__name__)
 
 states = 0
 
 logging.basicConfig()
-logging.disable()
+# logging.disable()
 
 SAVE_PATH = pathlib.Path.home() / "Downloads" / "ZE LOADER"
 
@@ -39,13 +40,12 @@ ERROR_LIST = []
 VIDEO_LAST_NAME = ''
 VIDEO_DOWNLOADED = False
 HISTORY_MAX_LENGHT = 9
-FIRST_RUN = 0
+FIRST_RUN = False
 
 os.makedirs(CONFIG_PATH, exist_ok=True)
 
 
 if os.path.exists(DATABASE_PATH) == False:
-    FIRST_RUN += 1
     browser_cookie = 'not_using'
     download_folder = None
     if os.name == 'posix':
@@ -53,6 +53,9 @@ if os.path.exists(DATABASE_PATH) == False:
 
         if name == 'google-chrome':
             browser_cookie = 'chrome'
+
+        
+        # TESTING FUNCTION
 
         config_path = os.path.expanduser('~/.config/user-dirs.dirs')
 
@@ -73,6 +76,7 @@ if os.path.exists(DATABASE_PATH) == False:
     history = json.dumps([])
     download_type = 'video+audio'
     download_quality = 'best_quality'
+    # download_path = json.dumps(str(SAVE_PATH))
     download_path = json.dumps(download_folder)
     print(history)
     print(download_type)
@@ -88,6 +92,8 @@ if os.path.exists(DATABASE_PATH) == False:
         download_path,
         browser_cookie
         )
+    
+    FIRST_RUN = True
 
 database.initialize_database(DATABASE_PATH)
 
@@ -216,17 +222,34 @@ class YTDLPHelper:
                 'speed': ansi_escape.sub('', str(SPEED)),
                 'eta': ansi_escape.sub('', str(ETA))
             })
+
+
+#
+#
+# REACTION ON PAGES 
+#
+#
+
  
 @app.route('/')
 @app.route('/index')
 def index():
     global FIRST_RUN
-
-    if FIRST_RUN == 1:
-        FIRST_RUN -= 1
+    FIRST_RUN = False
+    if FIRST_RUN is True:
+        FIRST_RUN = False
         return render_template('welcome.html')
     
     else:
+        erorr = request.args.get('error', '')
+        print(erorr)
+        erorr.replace('\n', '<br>')
+        # if erorr is not None:
+        #     erorr.replace('\n', '<br>')
+        #     print(erorr)
+        #     return render_template('index-error.html', app_icon='/styles/static/icon.ico', error_value=erorr)
+        # else:
+        # a = str(f'{DATABASE_PATH}\n{SAVE_PATH}\n{CONFIG_PATH}').replace('\n', '<br>')
         return render_template('index.html', app_icon='/styles/static/icon.ico')
 
 
@@ -240,6 +263,7 @@ def index_error():
 @app.route('/settings')
 def settings():
     download_path = json.loads(database.get_download_path())
+
     return render_template('settings.html', current_path=download_path)
 
 
@@ -263,6 +287,7 @@ def history():
             }
         )
 
+    print(history2)
     return render_template('history.html', histor=history2)
 
 
@@ -282,6 +307,7 @@ def download():
     threading.Thread(target=helper.download, args=(video_download_url, TASK_ID, video_path, video_type, video_quality, browser_cookie)).start()
 
     return render_template('download.html', state='loading...', task_id=TASK_ID)
+    # return render_template('download.html', state="Video BIG BLACK BALLS with niggers wow omg im so stupid \nis downloading... \nPERCENT: 0% | SPEED: 0 | ETA: 0".replace('\n', '<br>'))
 
 
 @app.route('/get_state')
@@ -315,7 +341,9 @@ def get_state():
     elif 'Sign in to confirm' in str(ERROR_TEXT) or 'Video unavailable' in str(ERROR_TEXT):
         error_text = "Video is unavailble. \nTry change browser's cookies in settings".replace('\n', '<br>')
     elif 'Requested format is not available' in str(ERROR_TEXT):
-        error_text = "Video is unavailble. \nTry change download quality in settings\nTry remove browser's cookies in settings".replace('\n', '<br>')
+        error_text = "Video is unavailble. \nTry change download quality in settings\nTry remove browser's cookies in settings".replace('\n', '<br>')    
+    elif 'Failed to decrypt with DPAPI' in str(ERROR_TEXT):
+        error_text = "Browser cookies is not available. \nTry close youtube in your browser or disable browser's cookies in settings".replace('\n', '<br>')
     else:
         error_text = str(ERROR_TEXT)
 
@@ -346,7 +374,6 @@ def download_post():
 #
 #
 #
-
 
 @app.route('/set_video_quality', methods=['POST'])
 def set_video_quality():
@@ -392,9 +419,18 @@ def set_directory_path():
     return jsonify({'path': database.get_download_path()})
 
 
+#
+#
+# REACTION FUNCTION
+#
+#
+
+
 @app.route('/delete_history', methods=['POST'])
 def delete_history_page():
     data = request.get_json()
+    print(data)
+
 
     history = json.loads(database.get_history())
 
@@ -402,12 +438,101 @@ def delete_history_page():
         if i['path'] == data['path']:
             history.remove(i)
 
+
     database.set_history(json.dumps(history))
     if os.path.exists(data['path']):
         os.remove(data['path'])
 
+ 
     return jsonify({'q': 'q'})
 
 
+
+
+
+
+# 
+# 
+# 
+# 
+# GUI PROPERTIES
+# 
+# 
+# 
+# 
+
+def find_free_port():
+    with socket.socket() as s:
+        s.bind(('', 0))
+        return s.getsockname()[1]
+    
+
+
+ICON_PATH = {
+    'Windows': 'static/images/icon.ico',
+    'Linux': 'static/images/app_icon.png',
+    'Darwin': 'static/images/app_icon.icns'
+}.get(platform.system(), '')
+
+
+PORT = find_free_port()
+
+
+def flask_run_properties():
+    app.run(port=PORT, host='127.0.0.1')
+
+
+def get_platform_icon():
+    # Базовый путь к папке с иконками
+    icons_dir = pathlib.Path('./static/images').resolve()
+    
+    if sys.platform == 'linux':
+        icon_path = icons_dir / 'icon.png'
+    elif sys.platform == 'darwin':  # macOS
+        # На macOS обычно используют .icns файлы, но можно и .png
+        icon_path = icons_dir / 'icon.png'  # или 'icon.png'
+    else:  # Windows и другие
+        icon_path = icons_dir / 'icon.ico'
+    
+    if not os.path.exists(icon_path):
+        print(f'Иконка не найдена: {icon_path}')
+        return None
+    
+    return icon_path
+
+
+icon_path = get_platform_icon()
+
+
+def create_window(): 
+    window = webview.create_window(
+        'ZE LOADER',
+         http_port=PORT, 
+         width=1200, 
+         height=700, 
+         min_size=(800, 450), 
+         easy_drag=True, 
+         frameless=True, 
+         draggable=True, 
+         text_select=True, 
+         vibrancy=True, 
+         url=app
+         )
+
+
+    def close():
+        window.destroy()
+    
+    window.expose(close)
+    
+    return window
+
+
+
+
 if __name__ == "__main__":
-    flaskwebgui.FlaskUI(app=app, server="flask", width=1200, height=700, port=13225).run()
+    app.debug = True
+    # app.run(host='127.0.0.1', port=PORT)
+    window = create_window()
+    webview.start(icon=icon_path)
+    

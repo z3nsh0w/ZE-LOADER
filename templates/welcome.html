@@ -2,45 +2,225 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
 
-    <title>ZE TOOLS</title>
+  <title>ZE LOADER TOUR</title>
 
-    <link href="{{ url_for('static', filename='styles/style2.css') }}" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap" rel="stylesheet">    
-    <link rel="icon" href="/static/images/icon.ico">
+  <link href="{{ url_for('static', filename='styles/style2.css') }}" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gruppo&family=Jura:wght@300..700&family=Noto+Sans+Mono:wght@700&family=Orbitron:wght@400..900&family=Permanent+Marker&family=Poppins:wght@400;700&family=Press+Start+2P&family=Quicksand:wght@700&family=Russo+One&display=swap"
+    rel="stylesheet">
+  <link rel="icon" href="/static/images/icon.ico">
+  <style>
+    .icon {
+      fill: white;
+    }
+  </style>
+
+  <script>
+    // window.onload = function() {
+    //     window.resizeTo(1200, 700);
+    //     window.onresize = function() {
+    //         window.resizeTo(1200, 700);
+    //     };
+    // };
+  </script>
 
 </head>
 
 <body>
-    <div class="main_card">
-        <div class="welcome_icon"></div>
-        <h1 class="welcome_text">Welcome to ZE LOADER</h1>
-        <form class="button_form" action="/index">
-            <button class="animated-button">
-                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                  ></path>
-                </svg>
-                <span class="text">SEE THE TOUR</span>
-                <span class="circle"></span>
-                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                  ></path>
-                </svg>
-              </button>              
-        </form>
+  <div id="main_card" class="pywebview-drag-region">
+    <div class="welcome_icon" id="welcome_icon"></div>
+    <h1 class="welcome_text">Welcome to ZE LOADER</h1>
+    <div class="button_form">
+      <button class="animated-button" id="skip_first_page">
+        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+          </path>
+        </svg>
+        <span class="text">SEE THE TOUR</span>
+        <span class="circle"></span>
+        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+          </path>
+        </svg>
+      </button>
     </div>
+  </div>
+
+
+  <div id="second_card" class="pywebview-drag-region">
+    <h1 id="welcome_text3" class="welcome_text2">With our app, you can easily download videos and audio in any format
+      from any source.</h1>
+    <h2 id="welcome_text3" class="welcome_text2" style="font-size: 32px;">We supports 1,000+ sites, including popular
+      services like...</h1>
+      <div class="brend_container">
+        <div class="brends" id="brends">
+          <div class="logo">
+            <img src="/static/images/YouTube_Logo.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Google_Drive.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/yandex.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/twitter.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Twitch.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/rutube.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Instagram.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/facebook.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/TikTok_Logo.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Reddit.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Soundcloud.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Spotify.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Trovo.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/Microsoft.svg" alt="logo" height="70px">
+          </div>
+          <div class="logo">
+            <img src="/static/images/TikTok_Logo.svg" alt="logo" height="70px">
+          </div>
+        </div>
+      </div>
+
+      <div class="button_form">
+        <button class="animated-button" id="skip_second_page">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="text">NEXT</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
+      </div>
+  </div>
+
+
+<div id="third_card" class="pywebview-drag-region">
+    <img src="/static/images/cookie.png" alt="logo" height="70px">
+
+    <h1 id="welcome_text2" class="welcome_text2">For smoother video downloads, you can export cookies from your browser.</h1>
+    <h2 id="welcome_text2" class="welcome_text2" style="font-size: 32px;">Select your browser to continue, or skip this step if preferred.</h1>
+      
+
+      <div class="button_form">
+        <button class="animated-button">
+          <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+          <span class="text">NEXT</span>
+          <span class="circle"></span>
+          <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+            </path>
+          </svg>
+        </button>
+      </div>
+  </div>
 
 </body>
+<script>
+  document.querySelector('#skip_first_page').addEventListener('click', function () {
+    const second_tour = document.getElementById('second_card');
+    const main_tour = document.getElementById('main_card');
+    const welcome_icon = document.getElementById('welcome_icon');
+    const welcome_text = document.getElementById('welcome_text2');
+
+    second_tour.style.display = 'block';
+    main_tour.style.animation = 'closing_main_card 1.0s forwards';
+    welcome_icon.style.animation = 'closing_main_card 1.0s forwards';
+    welcome_text.style.animation = 'font_size_animation 1.0s forwards';
+    main_tour.classList.add('closing_main_card');
+
+    main_tour.addEventListener('transitionend', function () {
+      // second_tour.style.position = 'absolute';
+      // main_tour.remove(); 
+    }, { once: true });
+
+  });  
+  
+  
+  document.querySelector('#skip_second_page').addEventListener('click', function () {
+    const second_tour = document.getElementById('third_card');
+    const main_tour = document.getElementById('second_card');
+    const welcome_icon = document.getElementById('welcome_icon');
+    const welcome_text = document.getElementById('welcome_text3');
+
+    second_tour.style.display = 'block';
+    main_tour.style.animation = 'closing_main_card 1.0s forwards';
+    welcome_icon.style.animation = 'closing_main_card 1.0s forwards';
+    welcome_text.style.animation = 'font_size_animation 1.0s forwards';
+    main_tour.classList.add('closing_main_card');
+
+    main_tour.addEventListener('transitionend', function () {
+    }, { once: true });
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.brends');
+    const originalContent = container.innerHTML;
+
+    let duplicatedContent = '';
+    for (let i = 0; i < 50; i++) {
+      duplicatedContent += originalContent;
+    }
+
+    container.innerHTML = duplicatedContent;
+  });
+</script>
 
 </html>

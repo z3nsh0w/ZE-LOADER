@@ -155,3 +155,8 @@ def set_browser_cookie(new_value):
     database.commit()
 
     database.close()
+
+
+
+# initialize('data.db')
+# get_download_type('data.db')

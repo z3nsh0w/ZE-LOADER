@@ -18,14 +18,76 @@ body {
     background-color: #181818;
     align-items: center;
     color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 15px;
+
 }
 
 
-.main_card {
+@keyframes closing_main_card {
+    0% {
+        width: 100%;
+        height: 100%; 
+        background-size: 100%;
+    }
+
+    100% {
+        width: 0px;
+        height: 0px;
+        background-size: 0px;
+
+    }
+}
+
+@keyframes font_size_animation {
+    0% {
+        font-size: 60px;
+    }
+
+    100% {
+        font-size: 42px;
+
+    }
+}
+
+
+/*  */
+/*  */
+/* INDEX HTML PAGE */
+/*  */
+/*  */
+
+
+#main_card {
     align-items: center;
     text-align: center;
     display: block;
     user-select: none;
+    animation: none;
+    overflow: hidden;
+    height: 600px;
+
+}
+
+#second_card {
+    align-items: center;
+    text-align: center;
+    display: none;
+    user-select: none;
+    transition: all 0.5s;
+    margin-right: 45px;
+}
+
+#third_card {
+    align-items: center;
+    text-align: center;
+    display: none;
+    user-select: none;
+    transition: all 0.5s;
+    margin-right: 45px;
 }
 
 .main_card2 {
@@ -42,6 +104,20 @@ body {
     padding-bottom: 14px;
 }
 
+.welcome_text2 {
+    width: 90%;
+    margin-left: 5%;
+    font-size: 60px;
+    order: 2;
+    padding-top: 40px;
+    padding-bottom: 14px;
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+    user-select: none;
+    overflow: hidden;
+}
+
 .welcome_icon {
     background-image: url('/static/images/icon.ico');
     background-size: 180px;
@@ -54,6 +130,14 @@ body {
     background-position: center;
     margin-top: 130px;
 }
+
+
+/*  */
+/*  */
+/* NEXT BUTTON ON INDEX */
+/*  */
+/*  */
+
 
 .welcome_next_button {
     display: block;
@@ -168,3 +252,46 @@ body {
     height: 220px;
     opacity: 1;
 }
+
+
+
+.brend_container {
+    /* transform: translate(-50%, -50%); */
+
+}
+
+.brends {
+    height: 150px;
+    width: 1000px;
+    /* background-color: #2b2b2b; */
+    margin: 0 auto;
+    display: flex;
+    padding: 2.5em;
+    overflow: hidden;
+    border-radius: 20px
+    /* box-shadow: 0px 5px 10px #000; */
+    align-items: center;
+}
+
+@keyframes animate_logo {
+    0% {
+        transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 150));
+    }
+}
+
+.logo {
+    /* size: 12px;
+    image-resolution: 10px; */
+    /* width: 10px; */
+    user-select: none;
+    height: 100px;
+    margin-left: 3em;
+    pointer-events: none;
+    animation: animate_logo 360s linear infinite;
+    /* filter: hue-rotate(90deg); */
+}
+

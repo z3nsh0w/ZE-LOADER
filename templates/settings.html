@@ -20,18 +20,34 @@
 
     <link rel="icon" href="/static/images/icon.ico">
 
+    <style>
+        .icon {
+            fill: white;
+        }
+    </style>
+
+    <script>
+        // window.onload = function () {
+        //     window.resizeTo(1264, 700);
+        //     window.onresize = function () {
+        //         window.resizeTo(1264, 700);
+        //     };
+        // };
+    </script>
+
 </head>
 
 <body>
-    <ul>
+    <ul id="header_page"  class="pywebview-drag-region">
         <li><a class="bar_icon"></a></li>
         <li><a href="/index">Main</a></li>
         <li><a href="/history">History</a></li>
         <li><a href="/settings" class="bar_main">Settings</a></li>
         <li><a href="/about">About</a></li>
+        <li><a href='' id="close-btn" class="window-btn" onclick="window.pywebview.api.close()">Close APP</a></li>
     </ul>
 
-    <div class="setting_cont">
+    <div id="setting_cont" class="pywebview-drag-region">
         <div class="set_cont">
             <div class="setting1_icon"></div>
             <div class="setting_name">MAIN SETTINGS</div>
@@ -77,6 +93,8 @@
             <div class="setting1_name">Edit destination path</div>
             <div class="current_path_">(current path: {{ current_path }})</div>
             <div class="edit_dist_path_button">
+                <!-- <label for="fileInput" class="edit_directory_button">CHOOSE DIRECTORY</label> -->
+                <!-- <input type="file" id="fileInput" class="file-input" webkitdirectory directory multiple /> -->
                 <button class="choose_directory_button" id="choose_directory_button">CHOOSE DIRECTORY</button>
             </div>
         </div>
@@ -90,9 +108,27 @@
                     <span class="url_text">ENTER PATH</span>
                     <i></i>
                 </div>
-                <button class="ok_button_dist_path">OK.</button>
+                <button class="ok_button_dist_path">Confirm</button>
             </div>
         </div>
+
+
+        <!-- <div class="set_cont">
+            <div class="setting1_icon"></div>
+            <div class="setting_name">ADDONS SETTINGS</div>
+
+        </div> -->
+
+        <!-- <div class="set_cont">
+            <div class="setting5_icon"></div>
+            <div class="setting1_name">Auto URL in buffer detecter</div>
+            <input type="checkbox" id="checkbox" class="turn_on_checkbox" />
+            <label for="checkbox" class="switch_turn_on">
+                <div class="switch_on_off">ON</div>
+            </label>
+
+        </div> -->
+
 
     </div>
 
@@ -203,6 +239,48 @@
 
 
 
+        // document.getElementsByClassName('edit_directory_button').addEventListener('change', function (event) {
+        //     const files = event.target.files;
+        //     if (files.length > 0) {
+        //         const fullPath = files[0].webkitRelativePath.split('/')[0];
+        //         document.getElementById('full-path').textContent = fullPath;
+        //         console.log(fullPath);
+        //     }
+        // });
+
+
+
+        // document.addEventListener('DOMContentLoaded', function () {
+        //     const fileInput = document.getElementById('fileInput');
+
+        //     fileInput.addEventListener('change', function (event) {
+        //         const files = event.target.files;
+
+        //         if (files.length > 0) {
+        //             const directoryPath = files[0].webkitRelativePath.split('/')[0];
+
+        //             sendDirectoryPath(directoryPath);
+        //         }
+        //     });
+
+        //     function sendDirectoryPath(path) {
+        //         fetch('/set_directory_path', {
+        //             method: 'POST',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             body: JSON.stringify({ path: path }),
+        //         })
+        //             .then(response => response.json())
+        //             .then(data => {
+        //                 console.log('Directory path set to:', data.path);
+        //             })
+        //             .catch(error => {
+        //                 console.error('Error:', error);
+        //             });
+        //     }
+        // });
+
         document.addEventListener('DOMContentLoaded', function () {
             const urlInput = document.querySelector('.url_input');
             const okButton = document.querySelector('.ok_button_dist_path');
@@ -303,6 +381,21 @@
     </script>
 
     <script>
+        // const checkbox = document.getElementById('checkbox');
+        // const switchOnOff = document.querySelector('.switch_on_off');
+
+        // function updateSwitchText() {
+        //     if (checkbox.checked) {
+        //         switchOnOff.textContent = 'ON';
+        //     } else {
+        //         switchOnOff.textContent = 'OFF';
+        //     }
+        // }
+
+        // checkbox.addEventListener('change', updateSwitchText);
+
+        // updateSwitchText();
+
         const checkbox = document.getElementById('checkbox');
         const switchOnOff = document.querySelector('.switch_on_off');
 

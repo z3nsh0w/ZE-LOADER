@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полупрозрачное приложение</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: transparent;
+            /* Прозрачный фон */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Полупрозрачный белый фон */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px auto;
+            width: 50%;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+    </style>
+    <div class="container">
+        <h1>Полупрозрачное приложение</h1>
+        <p>Это пример полупрозрачного веб-приложения.</p>
+    </div>
+</body>
+
+</html>

@@ -18,29 +18,35 @@
 
     <link rel="icon" href="/static/images/icon.ico">
 
+    <style>
+        .icon {
+            fill: white;
+        }
+    </style>
 
 </head>
 
 <body>
     <header>
-        <ul class="header_page">
+        <ul id="header_page"  class="pywebview-drag-region">
             <li><a class="bar_icon"></a></li>
             <li><a href="/index" class="bar_main">Main</a></li>
             <li><a href="/history">History</a></li>
             <li><a href="/settings">Settings</a></li>
             <li><a href="/about">About</a></li>
+            <li><a href='' id="close-btn" class="window-btn" onclick="window.pywebview.api.close()">Close APP</a></li>
         </ul>
     </header>
     
-    <div class="main">
+    <div id="main" class="pywebview-drag-region">
         <div class="download_form">
             <form action="/download" method="GET">
                 <input class="url_input" required="" type="text" name="url" autocomplete="off">
                 <span class="url_text">ENTER VIDEO URL</span>
+                <!-- <button class="url_submit" type="submit">Download!</button> -->
                  <i></i>
             </form>
         </div>
-
     </div>
 </body>
 
